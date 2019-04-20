@@ -1,0 +1,66 @@
+<nav class='navbar navbar-default'>
+	<div class='container-fluid'>
+		<div class='navbar-header'>
+			<a class='navbar-brand'>Quizmania</a>
+		</div>
+		<div class='collapse navbar-collapse'
+			id='bs-example-navbar-collapse-1'>
+			<ul class='nav navbar-nav navbar-right'>
+				<li><a>You are logged-in as ADMIN</a></li>
+				<button type='button' class='btn btn-default navbar-btn'
+					routerLink='/login'>Logout</button>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div *ngIf="message!==null; else authorizedUser">
+	<p>should not be here :(</p>
+	<p class="text-center error-text">{{message}}</p>
+</div>
+<ng-template #authorizedUser>
+<div *ngIf="quizzes?.length==0; else elseBlock">No pending
+	quizzes!</div>
+
+<ng-template #elseBlock>
+<div class="container">
+	<div class='row'>
+		<table class="table">
+			<thead class="thead-inverse">
+				<tr>
+					<th class="text-center">Quiz ID</th>
+					<th class="text-center">Title</th>
+					<th class="text-center">Time Limit</th>
+					<th class="text-center">Category</th>
+					<th class="text-center">Status</th>
+					<th class="text-center">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- <div *ngFor="let b of quizzes">
+                            {{b.quizID}}
+                          </div> -->
+				<tr *ngFor="let q of quizzes">
+					<td class="text-center" style="width: 15px;">{{q.quizID}}</td>
+					<td class="text-center" style="width: 200px;">{{q.title}}</td>
+					<td class="text-center" style="width: 50px;">{{q.timeLimit}}
+						minutes</td>
+					<td class="text-center" style="width: 50px;">{{q.category}}</td>
+					<td class="text-center" style="width: 80px;">{{q.status}}</td>
+					<td class="text-center" style="width: 80px;">
+						<button type='button' class='actionButton'
+							(click)='reviewQuiz(q.quizID);'>Review</button>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<button type='button' class='actionButton' (click)='goBack();'>Back
+			to My Dashboard</button>
+	</div>
+
+</div>
+</ng-template> 
+</ng-template>

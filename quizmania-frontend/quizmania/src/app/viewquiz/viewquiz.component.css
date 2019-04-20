@@ -1,0 +1,37 @@
+.displayResponse {
+  width: 25em;
+  padding: 1.1em;
+}
+
+.question {
+  font-weight: bold;
+  color: white;
+  background-color: gray;
+  border-style: none none double none;
+  border-bottom: 5px solid #4a0868;
+  padding: 5px;
+  
+  margin-bottom: 10px;
+}
+
+.choice {
+  font-weight: bold;
+  color: #4a0868;
+}
+
+hr {
+  color: black;
+  size: 10px;
+  height: 2px;
+  width: 25px;
+}
+
+.ng-valid[required],
+.ng-valid.required,
+.ng-pristine {
+  border-bottom: 5px solid green;
+}
+
+.ng-invalid:not(form) {
+  border-bottom: 5px solid maroon;
+}
